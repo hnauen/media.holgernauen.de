@@ -1,0 +1,8 @@
+bin
+collection
+incoming
+node_modules
+site/public
+site/.hugo_build.lock
+.DS_Store
+.mhdrc

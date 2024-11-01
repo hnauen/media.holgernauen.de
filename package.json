@@ -1,0 +1,53 @@
+{
+  "name": "media.holgernauen.de",
+  "version": "0.0.1",
+  "description": "Tools to maintain the media collection",
+  "main": "bin/index.js",
+  "bin": {
+    "media.holgernauen.de": "bin/index.js",
+    "mhd": "bin/index.js"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.14.0",
+    "@types/eslint__js": "^8.42.3",
+    "@types/expand-tilde": "^2.0.2",
+    "@types/findup-sync": "^4.0.5",
+    "@types/node": "^22.8.6",
+    "@types/yargs": "^17.0.33",
+    "eslint": "^9.14.0",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.12.2"
+  },
+  "scripts": {
+    "build": "tsc",
+    "eslint": "eslint ./src",
+    "create-folders": "mkdir -p _ 0 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 国",
+    "create-media-info": "./tools/create-media-info.sh",
+    "convert-to-mp3": "./tools/convert-to-mp3.sh",
+    "prepare-folders": "./tools/prepare-folders.sh",
+    "prepare-album": "./tools/prepare-album.sh",
+    "update-collection": "./tools/update-collection.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hnauen/media.holgernauen.de.git"
+  },
+  "author": "Holger Nauen <hn@holgernauen.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hnauen/media.holgernauen.de/issues"
+  },
+  "homepage": "https://github.com/hnauen/media.holgernauen.de#readme",
+  "dependencies": {
+    "dayjs": "^1.11.13",
+    "dotenv": "^16.4.5",
+    "execa": "^9.5.1",
+    "exiftool-vendored": "^28.8.0",
+    "expand-tilde": "^2.0.2",
+    "findup-sync": "^5.0.0",
+    "json5": "^2.2.3",
+    "winston": "^3.15.0",
+    "yargs": "^17.7.2"
+  }
+}
