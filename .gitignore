@@ -4,5 +4,6 @@ incoming
 node_modules
 site/public
 site/.hugo_build.lock
+.env
 .DS_Store
 .mhdrc
