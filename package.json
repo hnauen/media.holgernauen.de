@@ -47,6 +47,7 @@
     "expand-tilde": "^2.0.2",
     "findup-sync": "^5.0.0",
     "json5": "^2.2.3",
+    "liquidjs": "^10.19.0",
     "winston": "^3.15.0",
     "yargs": "^17.7.2"
   }

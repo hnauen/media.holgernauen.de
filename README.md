@@ -1,4 +1,4 @@
-# media.holgernauen.de
+# media.holgernauen.de aka `mhd`
 
 Tools to maintain the media collection.
 
@@ -6,7 +6,7 @@ Tools to maintain the media collection.
 > All the stuff here is for my media collection and only tested on my devices and with my software.
 > Feel free to ask, but I'm afraid I don't have the capacity for extensive support.
 
-- [media.holgernauen.de](#mediaholgernauende)
+- [media.holgernauen.de aka `mhd`](#mediaholgernauende-aka-mhd)
   - [Workflow](#workflow)
   - [Installation](#installation)
     - [Required tools](#required-tools)

@@ -1,18 +1,20 @@
 {
   options: {
     logLevel: 'info', // 'error', 'info', 'verbose', 'debug'
-    //intFolder: '/path/to/folder' // Do not configure a relative path here, "mhd" might be executed from another "cwd".
+    // intFolder: '/path/to/folder' // Do not configure a relative path here, "mhd" might be executed from another "cwd".
+    // vars: ['prodLocation=remote:other/path/to/media','bkupLocation=remote:other/path/to/media']
+
   },
   scripts: {
-    test: 'echo "huhu {prodLocation} {logLevel}/{intFolder}"',
+    test: 'echo "huhu {{prodLocation}} {{logLevel}}/{{intFolder}}"',
 
-    diff:    'rclone check   {intFolder}/collection {prodLocation}/collection --one-way {excludeCommon} {excludeInt}',
-    update:  'rclone copy -P {intFolder}/collection {prodLocation}/collection {excludeCommon} {excludeInt} --delete-excluded',
-    backup:  'rclone sync -P {prodLocation} {bkupLocation} {excludeCommon} --delete-excluded',
-    restore: 'rclone sync -P {bkupLocation} {prodLocation} {excludeCommon} --delete-excluded',
-    extract: 'rclone copy -P {prodLocation} {intFolder} --include="*.md"  &&  rclone rmdirs {intFolder}',
+    diff:    'rclone check   {{intFolder}}/collection {{prodLocation}}/collection --one-way {{excludeCommon}} {{excludeInt}}',
+    update:  'rclone copy -P {{intFolder}}/collection {{prodLocation}}/collection {{excludeCommon}} {{excludeInt}} --delete-excluded',
+    backup:  'rclone sync -P {{prodLocation}} {{bkupLocation}} {{excludeCommon}} --delete-excluded',
+    restore: 'rclone sync -P {{bkupLocation}} {{prodLocation}} {{excludeCommon}} --delete-excluded',
+    extract: 'rclone copy -P {{prodLocation}} {{intFolder}} --include="*.md"  &&  rclone rmdirs {{intFolder}}',
   },
-  vars: {
+  vars: { // Additional dafault variables, overwritable by options
     prodLocation: 'remote:path/to/media',
     bkupLocation: 'remote:path/to/media',
     excludeCommon: '--exclude ".DS_Store" --exclude="/.git/**"',

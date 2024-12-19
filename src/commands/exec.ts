@@ -1,8 +1,9 @@
 import yargs from "yargs";
 
 import { logger } from "../helper/logger";
-import { loadConfig } from "../helper/configuration";
+import { getConfiguration } from "../helper/configuration";
 import { DefaultOptions } from "../helper/yargs";
+import { renderTemplate } from "../helper/templates";
 
 // ------------------------------
 
@@ -14,7 +15,8 @@ export const execCommand: yargs.CommandModule = {
             .positional('script', {
                 describe: 'script to execute',
                 demandOption: true,
-                choices: Object.keys(loadConfig().scripts) || [],
+                choices: Object.keys(getConfiguration().scripts) || [],
+                coerce: (script: string) => {logger.debug("script %s", script); return script;},
             })
             .example([
                 ['$0 exec diff', 'Show differences between INT and PROD'],
@@ -41,7 +43,7 @@ interface Options extends DefaultOptions {
 const runCommand = async (options: Options) => {
     logger.debug('runCommand exec with options %s', options);
     try {
-        const config = loadConfig();
+        const config = getConfiguration();
 
         const vars = { ...config.options, ...config.vars };
         vars.command = options.script;
@@ -52,10 +54,11 @@ const runCommand = async (options: Options) => {
         let script = `${config.scripts[options.script]}`;
 
         logger.verbose(`${script}`); // log script incl. variables
-        for (const varName in vars) {
-            const varValue = vars[varName];
-            script = script.replaceAll(`{${varName}}`, varValue);
-        }
+        // for (const varName in vars) {
+        //     const varValue = vars[varName];
+        //     script = script.replaceAll(`{${varName}}`, varValue);
+        // }
+        script = renderTemplate(script, vars);
         logger.verbose(`${script}`); // log script with substituted variables
 
         const dynamicImport = new Function('specifier', 'return import(specifier)');

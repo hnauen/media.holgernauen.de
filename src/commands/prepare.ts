@@ -31,4 +31,5 @@ interface Options extends DefaultOptions {
 const runCommand = async (options: Options) => {
     logger.debug('runCommand exec with options %s', options);
     logger.error('Not implemented');
+    process.exit(2);
 };

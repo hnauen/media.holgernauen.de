@@ -47,7 +47,7 @@ const emptyConfiguration: Configuration = {
 
 let configuration: Configuration | undefined;
 
-export const loadConfig = (): Configuration => {
+const loadConfig = (): Configuration => {
     if (configuration) {
         return configuration;
     }
@@ -66,4 +66,8 @@ export const loadConfig = (): Configuration => {
         console.error(error);
         process.exit(1);
     }
+};
+
+export const getConfiguration = (): Configuration => {
+  return configuration || loadConfig();
 };
